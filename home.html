@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+      .welcomediv{
+        background-color: red;
+        width: 700px;
+        height: 300px;
+        margin-top: 210px;
+        margin-left: 400px;
+        border-radius: 50px;
+        color: aliceblue;
+      }
+      .welcome{
+        padding-top: 80px;
+        text-align: center;
+      }
+      .username{
+        text-align: center;
+      }
+      .logout:hover {
+        color: white;
+        font-size: 30px;
+        transition: color 0.3s, font-size 1s;
+      }
+
+    </style>
+
+</head>
+<body>
+
+<div class="welcomediv">
+  <h1 class="welcome">Welcome to Home page</h1>
+
+{% if user.is_authenticated %}
+  <h2 class="username">Hello <span style="background-color: blue; color: white;; font-style: italic;">{{ user.username }}</span></h2>
+  <h2 class="logout" style="text-align: center; color: blue;"><a style="text-decoration: none;" href="{% url 'profile' %}">Settings</a></h2>
+  <h2 class="logout" style="text-align: center; color: blue;"><a style="text-decoration: none;" href="{% url 'logout' %}">Logout</a></h2>
+
+</div>
+
+{% else %}
+  <a style="margin-left: 250px; font-size: 30px; text-decoration: none; color: white;" href="{% url 'login' %}">Login</a>
+  <a style="margin-left: 10px; font-size: 30px; text-decoration: none; color: white;" href="{% url 'register' %}">Register</a>
+
+{% endif %}
+
+</body>
+</html>

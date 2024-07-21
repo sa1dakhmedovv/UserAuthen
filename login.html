@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+      .div1{
+        background-color: red;
+        margin-left: 350px;
+        margin-top: 100px;
+        display: inline-block;
+        width: 400px;
+        height: 550px;
+      }
+      .bluepink{
+        width: 100%;
+        height: 550px;
+      }
+
+      .div2{
+        background-color: whitesmoke;
+        margin-left: 750px;
+        margin-top: -574px;
+        display: block;
+        width: 400px;
+        height: 550px;
+      }
+      .loginh2{
+        padding-top: 80px;
+        padding-left: 70px;
+      }
+      .usernamelabel{
+        opacity: 0.5;
+        margin-left: 70px;
+        font-size: 15px;
+      }
+      .userinp{
+        margin-left: 70px;
+        margin-top: 10px;
+        /* padding: 10px 30px;
+        font-size: 10px; */
+        width: 250px;
+        height: 25px;
+      }
+      .passwordlabel{
+        opacity: 0.5;
+        margin-left: 70px;
+        margin-top: 60px;
+      }
+
+      .logbut{
+        background-color: blueviolet;
+        border: none;
+        margin-top: 30px;
+        width: 260px;
+        height: 35px;
+        margin-left: 70px;
+        color: white;
+        font-size: 20px;
+      }
+      .logbut:hover{
+        color: blue;
+        background-color: white;
+        transition: color 1s, background-color 1s;
+        cursor: alias;
+      }
+
+      .register{
+        margin-left: 70px;
+        margin-top: 70px;
+        color: rgba(21, 21, 158, 0.564);
+      }
+
+    </style>
+</head>
+<body>
+{% load static %}
+
+  <div class="div1">
+
+    <img class="bluepink" src="{% static 'bluepink.jpg' %}" alt="this picture">
+
+  </div>
+
+  <div class="div2">
+
+    <h2 class="loginh2">Login</h2><br>
+  <form method="POST">
+
+    {% csrf_token %}
+    <label class="usernamelabel" form="text">Username</label><br>
+    <input class="userinp" {{ form.username }}</input><br><br><br>
+
+    <label class="passwordlabel" >Password</label><br>
+    <input class="userinp" {{ form.password }}</input>
+
+    <br>
+    <button class="logbut" type="submit">Login</button>
+
+  </form>
+
+  <h4 class="register">New User? <a style="text-decoration: none; color: purple;" href="{% url 'register' %}">Sign up</a></h2>
+
+  </div>
+
+
+</body>
+</html>
